@@ -10,20 +10,22 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
-        int[] dp = new int[k + 1];
-        for (int i = 1; i <= k; i++) {
+        List<Integer> sizes = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
-            dp[i] = (a * b) + dp[i - 1];
+            sizes.add(a * b);
         }
 
+        Collections.sort(sizes, Collections.reverseOrder());
         for (int i = 1; i <= k; i++) {
-            if (dp[i] >= n) {
+            if (sizes.get(i - 1) >= n) {
                 System.out.println(i);
                 return;
             }
+            n -= sizes.get(i-1);
         }
     }
 }
