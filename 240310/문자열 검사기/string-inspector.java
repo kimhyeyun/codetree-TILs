@@ -13,13 +13,13 @@ public class Main {
             if (c == '(' || c == '[') {
                 stack.add(c);
             } else if (c == ')') {
-                if (stack.peek() != '(' || stack.isEmpty()) {
+                if (stack.isEmpty() || stack.peek() != '(') {
                     System.out.println(0);
                     return;
                 }
                 stack.pop();
             } else if (c == ']') {
-                if (stack.peek() != '[' || stack.isEmpty()) {
+                if (stack.isEmpty() || stack.peek() != '[') {
                     System.out.println(0);
                     return;
                 }
