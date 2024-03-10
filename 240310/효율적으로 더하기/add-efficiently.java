@@ -15,8 +15,15 @@ public class Main {
             arrs[i] = Integer.parseInt(st.nextToken());
         }
 
-        answer = Integer.MAX_VALUE;
-        sol(0, new int[n], new boolean[n]);
+        // answer = Integer.MAX_VALUE;
+        // sol(0, new int[n], new boolean[n]);
+
+        // System.out.println(answer);
+
+        Arrays.sort(arrs);
+        for(int i = 0; i < n; i++) {
+            answer += (arrs[i] * (n - i));
+        }
 
         System.out.println(answer);
     }
