@@ -53,7 +53,10 @@ public class Main {
             right += 1;
         }
 
-        if (start == -1 && end == -1) return;
+        if (start == -1 && end == -1) {
+            switches[index] = switches[index] == 0 ? 1 : 0;
+            return;
+        }
 
         for (int i = start; i <= end; i++) {
             switches[i] = switches[i] == 0 ? 1 : 0;
