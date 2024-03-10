@@ -5,7 +5,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
-        int[][] dp = new int[n + 1][4];
+        long[][] dp = new long[n + 1][4];
 
         if(n == 1 || n == 2) {
             System.out.println(1);
@@ -21,7 +21,7 @@ public class Main {
             dp[i][3] = (dp[i - 3][1] + dp[i - 3][1]) % 1000000007;
         }
 
-        int answer = (dp[n][1] + dp[n][2] + dp[n][3]) % 1000000007;
+        long answer = (dp[n][1] + dp[n][2] + dp[n][3]) % 1000000007;
         System.out.println(answer);
     }
 }
