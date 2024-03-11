@@ -26,14 +26,16 @@ public class Main {
             if (m == 0) break;
 
             int t = len / 10;
-            if (t < m) {
+            if (t - 1 <= m) {
                 answer += t;
                 m -= (t - 1);
             } else {
                 answer += m;
-                t = 10 * m;
                 m = 0;
-                if (len - t == 10) answer += 1;
+                t = 10 * m;
+                
+                if (len - t == 10) 
+                    answer += 1;
             }
         }
 
