@@ -11,45 +11,40 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
-        int[] lens = new int[n];
+        List<int[]> list = new LinkedList<>();
 
         int answer = 0;
         for(int i = 0; i < n; i++) {
-            lens[i] = Integer.parseInt(st.nextToken());
-            if (lens[i] == 10) answer += 1;
+            int len = Integer.parseInt(st.nextToken());
+            if (len == 10) {
+                answer += 1;
+                continue;
+            }
+
+            int p = len / 10;
+            int r = len % 10;
+            
+            if (p == 0) continue;
+            if (r == 0) list.add(new int[]{p, p - 1});   
+            else list.add(new int[]{p, p});
         }
 
-        Arrays.sort(lens);
+        list.sort((o1, o2) -> {
+            if (o1[1] == o2[1]) {
+                return o2[0] - o1[0];
+            }
+            return o1[1] - o2[1];
+        });
 
-        for (int len : lens) {
-            if (len == 10) continue;
+        for (int[] arr : list) {
             if (m == 0) break;
-
-            int t = len / 10;
-            int r = len % 10;
-
-            if (r != 0) {
-                if (t <= m) {
-                    answer += t;
-                    m -= t;
-                } else {
-                    answer += m;
-                    m = 0;
-                    t = 10 * m;
-                }
-
+            
+            if (arr[1] <= m) {
+                answer += arr[0];
+                m -= arr[1];
             } else {
-                if (t - 1 <= m) {
-                    answer += t;
-                    m -= (t - 1);
-                } else {
-                    answer += m;
-                    m = 0;
-                    t = 10 * m;
-                
-                    if (len - t == 10) 
-                        answer += 1;
-                }
+                answer += m;
+                m = 0;
             }
         }
 
