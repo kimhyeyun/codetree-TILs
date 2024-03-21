@@ -203,13 +203,13 @@ public class Main {
 		int dist = Integer.MAX_VALUE;
 		int index = -1;
 
-		for (int d = 7; d >= 0; d--) {
-			int nx = rudolf[0] + rdx[d];
-			int ny = rudolf[1] + rdy[d];
+		// for (int d = 7; d >= 0; d--) {
+		// 	int nx = rudolf[0] + rdx[d];
+		// 	int ny = rudolf[1] + rdy[d];
 
-			if (nx < 0 || ny < 0 || N <= nx || N <= ny) continue;
-			if (map[nx][ny] != 0) return map[nx][ny];
-		}
+		// 	if (nx < 0 || ny < 0 || N <= nx || N <= ny) continue;
+		// 	if (map[nx][ny] != 0) return map[nx][ny];
+		// }
 
 		for (int i = 1; i <= P; i++) {
 			if (santas[i].isOut) continue;
