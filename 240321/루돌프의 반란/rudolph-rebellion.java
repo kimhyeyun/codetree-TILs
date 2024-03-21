@@ -145,6 +145,7 @@ public class Main {
 		int index = findNearestSanta();
 		int dir = -1;
 
+		if (index == -1) return;
 		if (santas[index].x > rudolf[0]) {
 			if (santas[index].y == rudolf[1]) dir = 6;
 			else if (santas[index].y > rudolf[1]) dir = 7;
@@ -201,6 +202,15 @@ public class Main {
 	private static int findNearestSanta() {
 		int dist = Integer.MAX_VALUE;
 		int index = -1;
+
+		for (int d = 7; d >= 0; d--) {
+			int nx = rudolf[0] + rdx[d];
+			int ny = rudolf[1] + rdy[d];
+
+			if (nx < 0 || ny < 0 || N <= nx || N <= ny) continue;
+			if (map[nx][ny] != 0) return map[nx][ny];
+		}
+
 		for (int i = 1; i <= P; i++) {
 			if (santas[i].isOut) continue;
 			int tmp = (int)(Math.pow((santas[i].x - rudolf[0]), 2) + Math.pow((santas[i].y - rudolf[1]), 2));
